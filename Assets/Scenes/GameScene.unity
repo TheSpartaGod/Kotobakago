@@ -350,7 +350,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 377578985}
+        m_TargetAssemblyTypeName: TextRecognizer, Assembly-CSharp
+        m_MethodName: RecognizeText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -368,19 +380,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 377578985}
-        m_TargetAssemblyTypeName: TextRecognizer, Assembly-CSharp
-        m_MethodName: RecognizeText
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -567,6 +567,7 @@ RectTransform:
   - {fileID: 1647595182}
   - {fileID: 1872073795}
   - {fileID: 377578980}
+  - {fileID: 1115836390}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1246,8 +1247,8 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   spawnedWords: []
   scoreText: {fileID: 1593937521}
-  SpawnDelay: 5
-  WordFallingSpeed: 0.01
+  SpawnDelay: 7
+  WordFallingSpeed: 0.005
 --- !u!224 &799034210
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1450,8 +1451,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2150773298
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
+    rgba: 2147483648
+  m_fontColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1542,12 +1543,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115836389}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.5001916, y: 0.7397959, z: -1.1565065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 509142311}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1115836391
 MonoBehaviour:
@@ -1563,12 +1564,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameScore: 0
   fallenWords: 0
+  canvas: {fileID: 509142310}
   spawner: {fileID: 799034209}
   countdownText: {fileID: 2085775405}
   RetryButton: {fileID: 1244707617}
   StartButton: {fileID: 578058130}
   MenuButton: {fileID: 1647595181}
-  InputField: {fileID: 377578979}
+  inputField: {fileID: 377578979}
   fallenText: {fileID: 1872073796}
   titleText: {fileID: 1348644000}
 --- !u!1 &1241962301

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     //I try to do it in one scene because WebGL support is still iffy
     public int gameScore;
     public int fallenWords;
+    public Canvas canvas; 
     public WordSpawner spawner;
     public TMPro.TextMeshProUGUI countdownText;
     private IEnumerator CountdownCoroutine;
@@ -17,9 +18,11 @@ public class GameManager : MonoBehaviour
     public GameObject RetryButton;
     public GameObject StartButton;
     public GameObject MenuButton;
-    public GameObject InputField;
+    public GameObject inputField;
     public TMPro.TextMeshProUGUI fallenText; 
-    public TMPro.TextMeshProUGUI titleText; 
+    public TMPro.TextMeshProUGUI titleText;
+    private bool currentFullScreen;
+    private bool newFullScreen; 
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -46,7 +49,7 @@ public class GameManager : MonoBehaviour
         AnimationController.AnimatePopUp(titleText.gameObject);
         RetryButton.SetActive(false);
         MenuButton.SetActive(false);
-        InputField.SetActive(false);
+        inputField.SetActive(false);
         
     }
     public void AddScore()
@@ -86,9 +89,9 @@ public class GameManager : MonoBehaviour
         //progressive increase of spawning and falling speed, to make it harder
         while (gameIsRunning)
         {
-            yield return new WaitForSeconds(5);
-            spawner.SpawnDelay = spawner.SpawnDelay * 0.95f;
-            spawner.WordFallingSpeed = spawner.WordFallingSpeed * 1.05f;
+            yield return new WaitForSeconds(8);
+            spawner.SpawnDelay = spawner.SpawnDelay * 0.99f;            
+            spawner.WordFallingSpeed = spawner.WordFallingSpeed * 1.01f;
         } 
     }
     private IEnumerator CountdownGame()
@@ -109,8 +112,8 @@ public class GameManager : MonoBehaviour
         AnimationController.AnimatePopUpDisappear(countdownText.gameObject);
         yield return new WaitForSeconds(0.2f);
         countdownText.text = "";
-        InputField.SetActive(true);
-        AnimationController.AnimatePopUp(InputField.gameObject);
+        inputField.SetActive(true);
+        AnimationController.AnimatePopUp(inputField.gameObject);
         spawner.StartSpawn();
         ProgressCoroutine = GameProgress();
         StartCoroutine(ProgressCoroutine); 
@@ -125,11 +128,11 @@ public class GameManager : MonoBehaviour
         countdownText.text = "ゲームオーバー";
         RetryButton.SetActive(true);
         MenuButton.SetActive(true);
-        InputField.SetActive(false); 
+        inputField.SetActive(false); 
         AnimationController.AnimatePopUp(countdownText.gameObject);
         AnimationController.AnimatePopUp(RetryButton.gameObject);
         AnimationController.AnimatePopUp(MenuButton.gameObject);
-        AnimationController.AnimatePopUpDisappear(InputField.gameObject);
+        AnimationController.AnimatePopUpDisappear(inputField.gameObject);
         countdownText.fontSize = 24;
         gameScore = 0;
         fallenWords = 0;        
@@ -141,6 +144,31 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        newFullScreen = Screen.fullScreen;
+        if (currentFullScreen != newFullScreen)
+        { //detects a change in fullscreen-ness
+            currentFullScreen = newFullScreen;
+           
             
+            if (currentFullScreen == true)
+            {
+                //disable input field
+                inputField.GetComponent<TMPro.TMP_InputField>().interactable = false;
+                var placeholder = inputField.GetComponent<TMPro.TMP_InputField>().placeholder.GetComponent<TMPro.TextMeshProUGUI>();
+                placeholder.text = "Fullscreenを無効にしてください";
+                placeholder.color = new Color(255, 0, 0, 128);
+                Debug.Log("Disabled input field");
+            }
+            else 
+            {
+                
+                var placeholder = inputField.GetComponent<TMPro.TMP_InputField>().placeholder.GetComponent<TMPro.TextMeshProUGUI>();
+                placeholder.text = "テクストをタイプ";
+                placeholder.color = new Color(0, 0, 0, 128);
+                inputField.GetComponent<TMPro.TMP_InputField>().interactable = true;
+            }
+            
+        }
+        
     }
 }

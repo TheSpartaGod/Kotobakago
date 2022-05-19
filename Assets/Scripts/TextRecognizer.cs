@@ -28,11 +28,26 @@ public class TextRecognizer : MonoBehaviour
                     spawner.scoreText.text = "スコア：" + GameManager.Instance.gameScore;
 
                     inputField.text = "";
+                    inputField.ActivateInputField();        
                 }
             }
         }
         
             
+    }
+    public void SelectTextBox()
+    {
+                  
+    }
+    private void Update()
+    {
+       /* if (Input.GetKey(KeyCode.Return)) 
+        {
+            Debug.Log("recognize text"); 
+            RecognizeText();
+            
+        }*/
+         
     }
 
 }
