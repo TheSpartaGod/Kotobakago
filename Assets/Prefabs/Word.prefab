@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e984f55932b549541b623dc67f0f59c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WordText: +1
+  WordText: "\u30D1\u30EC\u30FC\u30C9"
   textContainer: {fileID: 4554150159971696070}
 --- !u!61 &4554150160734214537
 BoxCollider2D:
@@ -237,7 +237,7 @@ Rigidbody2D:
   m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.00505
+  m_GravityScale: 0.0054684263
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

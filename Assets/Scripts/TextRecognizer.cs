@@ -35,19 +35,9 @@ public class TextRecognizer : MonoBehaviour
         
             
     }
-    public void SelectTextBox()
-    {
-                  
-    }
     private void Update()
     {
-       /* if (Input.GetKey(KeyCode.Return)) 
-        {
-            Debug.Log("recognize text"); 
-            RecognizeText();
-            
-        }*/
-         
+
     }
 
 }

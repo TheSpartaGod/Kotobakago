@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator CountdownGame()
     {
         countdownText.fontSize = 36;
+        countdownText.transform.position = new Vector3(0, 0, 0); 
         countdownText.text = "3";
         AnimationController.AnimatePopUp(countdownText.gameObject);
         yield return new WaitForSeconds(1);
@@ -125,7 +126,9 @@ public class GameManager : MonoBehaviour
         gameIsRunning = false;      
         StopCoroutine(ProgressCoroutine); 
         spawner.StopSpawn();
-        countdownText.text = "ゲームオーバー";
+        countdownText.text = "ゲームオーバー! \n スコア: " + gameScore ;
+        countdownText.transform.position = new Vector3(0, 1, 0);
+        countdownText.fontSize = 24; 
         RetryButton.SetActive(true);
         MenuButton.SetActive(true);
         inputField.SetActive(false); 
